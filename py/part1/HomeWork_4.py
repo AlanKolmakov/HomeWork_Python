@@ -27,8 +27,8 @@ while True:
             result = num1 - num2
         elif user_choice == 4:
             if num2 == 0:
-                print("На ноль делить нельзя!!!\n\nВыход из программы")
-                break
+                print("На ноль делить нельзя!!!\n")
+                continue
             else:
                 result = num1 / num2
         elif user_choice == 5:
@@ -40,7 +40,7 @@ while True:
                 print(f"Минимальное число {num2}")
             else:
                 print(f"{num1} равно {num2}")
-            break
+            continue
         elif user_choice == 8:
             if num1 > num2:
                 print(f"Максимальное число {num1}")
@@ -48,9 +48,10 @@ while True:
                 print(f"Максимальное число {num2}")
             else:
                 print(f"{num1} равно {num2}")
-            break
+            continue
         if result.is_integer():
             result = int(result)
     else:
         print("Ошибка ввода")
+        continue
     print(result)
