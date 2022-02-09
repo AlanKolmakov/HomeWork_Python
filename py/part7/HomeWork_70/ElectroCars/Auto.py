@@ -1,19 +1,19 @@
-from dataclasses import dataclass, field
-from py.part7.HomeWork_70.ElectroCars.Valid import ValidCar
+from attr import *
 
 
-@dataclass(init=True, repr=True, eq=True, order=False, unsafe_hash=False, frozen=False)
+@define(slots=True)
 class Auto:
     """Класс Автомобиль(Auto) со свойствами бренд, модель, год выпуска и пробег. Имеет метод вывода данных на экран"""
-    brand: str = ValidCar()
-    model: str = ValidCar()
-    year: int = ValidCar()
-    mileage: int = ValidCar()
+    brand: str = field(default="Tesla", validator=validators.instance_of(str))
+    model: str = field(default="T", validator=validators.instance_of(str))
+    year: int = field(default=2018, validator=validators.instance_of(int))
+    mileage: int = field(default=99000, validator=validators.instance_of(int))
     full_name_car: str = field(init=False)
 
-    def __post_init__(self):
+    def __attrs_post_init__(self):
+        if self.mileage < 0:
+            self.mileage *= -1
         self.full_name_car = self.brand + ' ' + self.model
 
     def car_info(self):
         print(f"Бренд: {self.brand}\nМодель: {self.model}\nГод выпуска: {self.year}\nПробег: {self.mileage} км")
-
