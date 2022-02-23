@@ -51,9 +51,10 @@ def parse_weather(urls):
             description = soup.find("p", class_="_1w83DFg2").get_text(strip=True)
             item = {
                 'Дата': dts,
-                'Температура в течении дня': temp,
+                'Температура': temp,
                 'Описание': description
             }
+        print(f"{item['Дата']}\n{item['Температура']}\n{item['Описание']}\n{'*' * 80}\n")
         write_csv(item)
 
 
@@ -69,11 +70,8 @@ def main():
     city = input("Введите город (в англ. раскладке): ").lower().strip()
     if city == '':
         city = 'irkutsk'
-    # with open('data.csv', "w") as f:
-    #     pass
     urls = get_data(PAGES_COUNT)
     parse_weather(urls)
-    # get_data(get_html(url))
 
 
 if __name__ == "__main__":
