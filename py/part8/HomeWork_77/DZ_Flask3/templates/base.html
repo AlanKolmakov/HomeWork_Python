@@ -1,0 +1,53 @@
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="author" content="Kolmakov Aleksandr, Python123">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+    {% block title %}
+    {% if title %}
+    <title>Flask-DZ3 -- {{ title }}</title>
+    {% else %}
+    <title>Flask-DZ3l</title>
+    {% endif %}
+    {% endblock %}
+
+</head>
+<body>
+
+{% block mainmenu %}
+<div class="container">
+    <header>
+        <div class="d-flex align-items-center mb-4 border-bottom">
+            <a href="/" class="d-flex align-items-center text-dark text-decoration-none">
+                <img src="{{url_for('static', filename='img/logo.png')}}" width="80" height="32" class="me-2" alt="">
+                <span class="fs-4">Главная</span>
+            </a>
+            <nav class="d-inline-flex mt-2 mt-md-0 ms-md-auto">
+                {% for m in mh %}
+                <a class="{{ m.css }}" href="{{ m.url }}">{{ m.title }}</a>
+                {% endfor %}
+            </nav>
+        </div>
+    </header>
+{% endblock mainmenu %}
+{% block content %}
+{% endblock content %}
+{% block footer %}
+    <footer class="fd">
+    <div class="d-flex flex-column flex-md-row align-items-center pb-3 mb-4 border-bottom">
+        <a href="/" class="d-flex align-items-center text-dark text-decoration-none">
+            <img src="{{url_for('static', filename='img/logo.png')}}" width="80" height="32" class="me-2" alt="">
+        </a>
+        <div class="d-inline-flex mt-2 mt-md-0 ms-md-auto">
+            {% for m in mf %}
+                <a class="{{ m.css }}" href="{{ m.url }}">{{ m.title }}</a>
+            {% endfor %}
+        </div>
+    </div>
+</footer>
+{% endblock footer %}
+</div>
+
+</body>
+</html>

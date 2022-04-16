@@ -1,0 +1,45 @@
+{% extends 'base.html' %}
+
+{% block content %}
+{{ super() }}
+<main>
+    <div class="pricing-header p-3 mx-auto text-center">
+        <h1 class="fw-normal">Популярные маршруты по направлениям</h1>
+    </div>
+
+    <div class="row row-cols-1 row-cols-md-3 mb-3 text-center">
+        {% for p in posts %}
+        <div class="col">
+            <div class="card mb-4 rounded-3 shadow-sm">
+                <div class="card-header py-3">
+                    <h4 class="my-0 fw-normal">{{ p.country }}</h4>
+                </div>
+                <div class="card-body">
+                    <h2 class="card-title pricing-card-title"><small>от</small> {{ p.price }} <small>руб/чел</small>
+                    </h2>
+                    <div class="list-unstyled mt-3 mb-4">
+                        <div class="star">
+                            {% for i in range(p.star) if i < 5 %}
+                            <img width="12" height="12" src="static/img/star.png">
+
+                            {% endfor %}
+                        </div>
+                        <ul>
+                            <li><p>{{ p.resort }}</p></li>
+                            <li><p>из Москва</p></li>
+                            <li><p>{{ p.duration }} ночей</p></li>
+                            <li><p>{{ p.nutrition }}</p></li>
+                            <li style="text-align: justify;"><br>{{ p.text[:240] | striptags }}</li>
+                        </ul>
+                    </div>
+                    <form action="{{ url_for('show', alias=p.url) }}">
+                    <button type="submit" class="w-100 btn btn-lg btn-outline-primary">Подробнее</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+        {% endfor %}
+    </div>
+</main>
+
+{% endblock %}

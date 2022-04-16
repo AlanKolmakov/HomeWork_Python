@@ -1,0 +1,16 @@
+{% extends "base.html" %}
+{% block content %}
+{{ super() }}
+<main>
+    <div style="line-height:1.5; padding-left: 10px">
+        <div class="ds" style="border-bottom: 1px solid #dee2e6; padding-bottom: 40px">
+            <h1 style="text-align: center">{{ country }}</h1>
+            <h3>{{ resort }}</h3>
+            <p>{{ text }}</p><br>
+            <img class="displayed" width="800px" src="{{url_for('static', filename='img/turkey_oceanica_Beach.jpg')}}"
+                 alt="">
+        </div>
+    </div>
+        {{ post | safe }}
+</main>
+{% endblock %}

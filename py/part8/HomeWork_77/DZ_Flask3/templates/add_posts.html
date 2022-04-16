@@ -1,0 +1,48 @@
+{% extends 'base.html' %}
+
+{% block content %}
+{{ super() }}
+{% for cat, msg in get_flashed_messages(True) %}
+<div class="flash {{cat}}">{{ msg }}</div>
+{% endfor %}
+<main>
+    <h1 style="padding-left: 20px">Добавления тура</h1>
+    <form action="{{ url_for('add_posts') }}" method="post" class="form-contact">
+        <table>
+            <tbody>
+            <tr>
+                <td>Название страны:</td>
+                <td><input type="text" name="name" required></td>
+            </tr>
+            <tr>
+                <td>URL:</td>
+                <td><input type="text" name="url" required></td>
+            </tr>
+            <tr>
+                <td>Цена путевки:</td>
+                <td><input type="text" name="price" required></td>
+            </tr>
+            <tr>
+                <td>Название курорта:</td>
+                <td><input type="text" name="resort" required></td>
+            </tr>
+            <tr>
+                <td>Количество звезд:</td>
+                <td><input type="text" name="star" required></td>
+            </tr>
+            <tr>
+                <td>Количество ночей:</td>
+                <td><input type="text" name="duration" required></td>
+            </tr>
+            <tr>
+                <td>Питание:</td>
+                <td><input type="text" name="nutrition" required></td>
+            </tr>
+            </tbody>
+        </table>
+        <p><br>Описание курорта:</p>
+        <p><textarea name="post" rows="22" cols="120"></textarea></p>
+        <p class="sub"><input type="submit" value="Добавить"></p>
+    </form>
+</main>
+{% endblock %}
