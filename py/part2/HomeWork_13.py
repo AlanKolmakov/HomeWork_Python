@@ -3,7 +3,7 @@
 # Найти из них наибольший элемент. Распечатать новый массив и наибольший элемент
 
 def choice_sort(a):
-    """ сортироовка списка а выбором """
+    """ Сортировка списка "а" выбором """
     n = len(a)
     for pos in range(0, n - 1):
         for k in range(pos + 1, n):
@@ -30,6 +30,6 @@ while True:
         new_positive_elements.append(num)
     print("Список: ", user_list)
     print("Новый список, состоящий из положительных элементов: ",
-        new_positive_elements)
+          new_positive_elements)
     print("Наибольший элемент списка: ", max(user_list))
     print("Сортированный список: ", choice_sort(user_list), "\n\n\n")
